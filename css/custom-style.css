@@ -1,0 +1,221 @@
+/* ================================
+   Butterfly 一图流背景方案
+   背景图文件：
+   source/img/bg/site-bg.png
+
+   目标：
+   1. 全站只使用 #web_bg 作为唯一背景图
+   2. 保留首页 title / subtitle 区域
+   3. 不让顶部图区域单独再加载一张背景
+   4. 主内容、侧边栏、文章卡片使用半透明毛玻璃效果
+================================ */
+
+
+/* ========== 1. 全站唯一背景图 ========== */
+
+#web_bg {
+  background: url('/img/bg/site-bg.png') center center / cover no-repeat fixed !important;
+}
+
+/* 页面主体透明，避免 body 自己盖住背景 */
+body {
+  background: transparent !important;
+}
+
+
+/* ========== 2. 顶部标题区域 ========== */
+
+/* 保留顶部区域，但不让它单独加载第二张背景图 */
+#page-header {
+  background: transparent !important;
+}
+
+/* 首页顶部区域高度：保留 title / subtitle 显示空间 */
+#page-header.full_page {
+  height: 100vh !important;
+  min-height: 420px;
+}
+
+/* 非首页顶部区域高度，例如文章页、分类页、标签页 */
+#page-header.not-home-page {
+  height: 20rem !important;
+}
+
+/* 顶部遮罩：让白色标题在背景图上更清晰 */
+#page-header::before {
+  background: rgba(0, 0, 0, 0.25) !important;
+}
+
+/* 确保首页标题、副标题、文章页标题可见 */
+#site-info,
+#page-header #site-title,
+#page-header #site-subtitle,
+#page-header .post-title {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
+}
+
+/* 首页标题区域位置 */
+#page-header #site-info {
+  position: absolute;
+  top: 43%;
+  padding: 0 10px;
+  width: 100%;
+}
+
+/* 首页标题 */
+#page-header #site-title {
+  font-weight: 700;
+}
+
+/* 首页副标题 */
+#page-header #site-subtitle {
+  margin-top: 0.6rem;
+}
+
+
+/* ========== 3. 主内容区半透明卡片 ========== */
+
+/* 首页文章卡片、文章页、普通页面、归档、分类、标签 */
+#recent-posts > .recent-post-item,
+.layout > div:first-child:not(.recent-posts),
+#post,
+#page,
+#archive,
+#tag,
+#category {
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* 侧边栏卡片 */
+#aside-content .card-widget {
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* ========== 4. 深色模式半透明卡片 ========== */
+
+[data-theme='dark'] #recent-posts > .recent-post-item,
+[data-theme='dark'] .layout > div:first-child:not(.recent-posts),
+[data-theme='dark'] #post,
+[data-theme='dark'] #page,
+[data-theme='dark'] #archive,
+[data-theme='dark'] #tag,
+[data-theme='dark'] #category {
+  background: rgba(18, 18, 18, 0.78) !important;
+}
+
+[data-theme='dark'] #aside-content .card-widget {
+  background: rgba(18, 18, 18, 0.78) !important;
+}
+
+
+/* ========== 5. 导航栏半透明 ========== */
+
+/* 顶部导航栏初始状态 */
+#nav {
+  background: rgba(255, 255, 255, 0.18) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* 深色模式导航栏初始状态 */
+[data-theme='dark'] #nav {
+  background: rgba(0, 0, 0, 0.25) !important;
+}
+
+/* 滚动后的导航栏，提高可读性 */
+#nav.show {
+  background: rgba(255, 255, 255, 0.82) !important;
+}
+
+[data-theme='dark'] #nav.show {
+  background: rgba(18, 18, 18, 0.82) !important;
+}
+
+
+/* ========== 6. 页脚透明化 ========== */
+
+#footer {
+  background: transparent !important;
+}
+
+#footer-wrap {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+}
+
+
+/* ========== 7. 首页向下箭头增强可见性 ========== */
+
+#scroll-down .scroll-down-effects {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+}
+
+
+/* ========== 8. GitHub 贡献图卡片适配一图流 ========== */
+
+.github-contribution-main {
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme='dark'] .github-contribution-main {
+  background: rgba(18, 18, 18, 0.78) !important;
+}
+
+
+/* ========== 9. 移动端适配 ========== */
+
+@media screen and (max-width: 768px) {
+  #web_bg {
+    background: url('/img/bg/site-bg.png') center center / cover no-repeat fixed !important;
+  }
+
+  #page-header.full_page {
+    height: 100vh !important;
+    min-height: 360px;
+  }
+
+  #page-header #site-info {
+    top: 42%;
+  }
+
+  #page-header #site-title {
+    font-size: 2rem !important;
+  }
+
+  #page-header #site-subtitle {
+    font-size: 1rem !important;
+  }
+
+  #recent-posts > .recent-post-item,
+  .layout > div:first-child:not(.recent-posts),
+  #post,
+  #page,
+  #archive,
+  #tag,
+  #category,
+  #aside-content .card-widget {
+    background: rgba(255, 255, 255, 0.86) !important;
+  }
+
+  [data-theme='dark'] #recent-posts > .recent-post-item,
+  [data-theme='dark'] .layout > div:first-child:not(.recent-posts),
+  [data-theme='dark'] #post,
+  [data-theme='dark'] #page,
+  [data-theme='dark'] #archive,
+  [data-theme='dark'] #tag,
+  [data-theme='dark'] #category,
+  [data-theme='dark'] #aside-content .card-widget {
+    background: rgba(18, 18, 18, 0.82) !important;
+  }
+}
