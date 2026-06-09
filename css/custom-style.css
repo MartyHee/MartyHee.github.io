@@ -116,27 +116,62 @@ body {
 }
 
 
-/* ========== 5. 导航栏半透明 ========== */
+/* ========== 5. 导航栏半透明：深色毛玻璃方案 ========== */
 
 /* 顶部导航栏初始状态 */
 #nav {
-  background: rgba(255, 255, 255, 0.18) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-/* 深色模式导航栏初始状态 */
-[data-theme='dark'] #nav {
-  background: rgba(0, 0, 0, 0.25) !important;
+  background: rgba(8, 20, 18, 0.46) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
 }
 
 /* 滚动后的导航栏，提高可读性 */
 #nav.show {
-  background: rgba(255, 255, 255, 0.82) !important;
+  background: rgba(8, 20, 18, 0.72) !important;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.24);
+}
+
+/* 导航栏站点标题 */
+#nav #site-name {
+  color: #ffffff !important;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+}
+
+/* 导航栏菜单文字与图标 */
+#nav .menus_items .menus_item > a,
+#nav .menus_items .menus_item > a i,
+#nav .menus_items .menus_item > a span {
+  color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+}
+
+/* 鼠标悬停效果 */
+#nav .menus_items .menus_item > a:hover {
+  color: #39ff88 !important;
+}
+
+/* 移动端菜单按钮 */
+#nav #toggle-menu {
+  color: #ffffff !important;
+}
+
+/* 搜索按钮、深色模式按钮等右侧图标 */
+#nav #search-button,
+#nav .site-page,
+#nav .menus_items .menus_item,
+#nav #nav-right button {
+  color: #ffffff !important;
+}
+
+/* 深色模式下保持同一套导航栏风格 */
+[data-theme='dark'] #nav {
+  background: rgba(8, 20, 18, 0.52) !important;
 }
 
 [data-theme='dark'] #nav.show {
-  background: rgba(18, 18, 18, 0.82) !important;
+  background: rgba(8, 20, 18, 0.78) !important;
 }
 
 
@@ -172,8 +207,105 @@ body {
   background: rgba(18, 18, 18, 0.78) !important;
 }
 
+/* ========== 代码块样式：深色终端风格 ========== */
 
-/* ========== 9. 移动端适配 ========== */
+/* 代码块整体 */
+figure.highlight,
+pre,
+.code-wrapper {
+  background: #0f172a !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+/* 代码块顶部语言栏 */
+figure.highlight .highlight-tools,
+.code-wrapper .highlight-tools {
+  background: #111827 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  color: #cbd5e1 !important;
+}
+
+/* 语言名称，例如 BASH / JS / PYTHON */
+figure.highlight .highlight-tools .code-lang,
+.code-wrapper .highlight-tools .code-lang {
+  color: #93c5fd !important;
+  font-weight: 700;
+}
+
+/* 复制按钮 */
+figure.highlight .highlight-tools .copy-notice,
+figure.highlight .highlight-tools i,
+.code-wrapper .highlight-tools i {
+  color: #94a3b8 !important;
+}
+
+/* 代码内容区域 */
+figure.highlight table,
+figure.highlight .code,
+figure.highlight .gutter,
+figure.highlight pre,
+figure.highlight td,
+.code-wrapper pre {
+  background: #0f172a !important;
+}
+
+/* 代码正文 */
+figure.highlight .code pre,
+figure.highlight .code,
+figure.highlight code,
+.code-wrapper code {
+  color: #e5e7eb !important;
+  font-family: Consolas, Monaco, 'Courier New', monospace;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* 行号 */
+figure.highlight .gutter pre,
+figure.highlight .gutter {
+  color: #64748b !important;
+  user-select: none;
+}
+
+/* 行号和代码之间的分隔 */
+figure.highlight .gutter {
+  border-right: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+/* 代码块内链接 */
+figure.highlight a {
+  color: #38bdf8 !important;
+}
+
+/* 行内代码 */
+p code,
+li code,
+td code {
+  padding: 0.18rem 0.38rem;
+  border-radius: 5px;
+  background: rgba(15, 23, 42, 0.88) !important;
+  color: #7dd3fc !important;
+  font-family: Consolas, Monaco, 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+/* 代码块滚动条 */
+figure.highlight ::-webkit-scrollbar {
+  height: 8px;
+}
+
+figure.highlight ::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 8px;
+}
+
+figure.highlight ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ========== 移动端适配 ========== */
 
 @media screen and (max-width: 768px) {
   #web_bg {

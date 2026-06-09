@@ -66,7 +66,7 @@
 
     recentPosts.prepend(card);
   }
-
+  
   function initCustomWidgets() {
     createClockCard();
     createGithubContributionInMain();
